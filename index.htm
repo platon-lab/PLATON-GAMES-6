@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLATON GAMES 6</title>
+
+    <link rel="icon" href="favicon.png" type="image/png">
+
+    <meta name="description" content="Найкраща стратегія Tower Defense.">
+    <meta name="keywords" content="Гра, Platon Games">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+        /* Основні стилі */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            /* Новий ефектний фон */
+            background: radial-gradient(circle at top right, #2c3e50, #000000, #1a1a2e);
+            background-attachment: fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            overflow-x: hidden;
+            overflow-y: auto; 
+            padding: 40px 20px;
+            user-select: none;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            background: linear-gradient(to right, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .games-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        /* Особлива "відгризена" картка */
+        .game-card {
+            display: block;
+            text-decoration: none;
+            position: relative;
+            width: 400px;
+            height: 550px;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: 5px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.05);
+            
+            /* Ефект "відгризеної" частини (залишаємо 70%) */
+            clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 75% 75%, 70% 100%, 0% 100%);
+        }
+
+        .game-card:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 40px 100px rgba(255, 215, 0, 0.4);
+            border-color: rgba(255, 215, 0, 0.8);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .game-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .game-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            font-size: 6rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        }
+
+        .play-text {
+            font-weight: 800;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        /* Анімації */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; letter-spacing: 3px; }
+            .game-card { width: 85vw; height: 120vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-overlay"></div>
+
+    <header class="header">
+        <h1>PLATON GAMES 6</h1>
+    </header>
+
+    <main class="games-container">
+        <a href="https://platon-lab.github.io/Mario/" target="_blank" class="game-card">
+            <img src="Mario.png" alt="Mario Game">
+            <div class="play-overlay">
+                <span class="play-icon">🍄</span>
+                <span class="play-text">ГРАТИ</span>
+            </div>
+        </a>
+    </main>
+
+</body>
+</html>
