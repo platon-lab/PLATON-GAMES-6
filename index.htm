@@ -22,7 +22,6 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            /* Новий ефектний фон */
             background: radial-gradient(circle at top right, #2c3e50, #000000, #1a1a2e);
             background-attachment: fixed;
             background-size: cover;
@@ -72,7 +71,6 @@
             animation: fadeInUp 1.2s ease-out;
         }
 
-        /* Особлива "відгризена" картка */
         .game-card {
             display: block;
             text-decoration: none;
@@ -87,8 +85,6 @@
             border: 5px solid rgba(255, 215, 0, 0.3);
             backdrop-filter: blur(15px);
             background: rgba(255, 255, 255, 0.05);
-            
-            /* Ефект "відгризеної" частини (залишаємо 70%) */
             clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 75% 75%, 70% 100%, 0% 100%);
         }
 
@@ -144,7 +140,24 @@
             color: white;
         }
 
-        /* Анімації */
+        /* Стилі для секретного відео */
+        #secret-video-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            z-index: 9999;
+        }
+
+        #secret-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-50px); }
             to { opacity: 1; transform: translateY(0); }
@@ -177,6 +190,33 @@
             </div>
         </a>
     </main>
+
+    <div id="secret-video-container">
+        <video id="secret-video" src="End.mp4"></video>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        const targetClicks = 20;
+        const videoContainer = document.getElementById('secret-video-container');
+        const video = document.getElementById('secret-video');
+
+        document.body.addEventListener('click', (e) => {
+            // Перевірка, щоб клік був саме по фону, а не по ігровій картці
+            if (e.target.closest('.game-card')) return;
+
+            clickCount++;
+            
+            if (clickCount >= targetClicks) {
+                videoContainer.style.display = 'block';
+                video.play();
+                
+                video.onended = () => {
+                    window.location.href = 'https://platon-lab.github.io/PLATON-GAMES-7/';
+                };
+            }
+        });
+    </script>
 
 </body>
 </html>
